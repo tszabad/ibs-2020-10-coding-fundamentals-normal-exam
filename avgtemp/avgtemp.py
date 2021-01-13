@@ -21,27 +21,28 @@ def temperature(file_name):
             dict_germany[num[3][0:4]] = int(num[2]
 )
     def temp_max_min(args):
-        max_temp = 0
-        min_temp = 40
-        new_max= {}
-        new_min = {}
+        max_temp = 16
+        min_temp = 18
+        new_max= ""
+        new_min = ""
         for k, v in args.items():
             if v > max_temp:
                 max_temp = v
-                new_max[k] = v
-                break
+                new_max = k
+                
         for k, v in args.items():
             if v < min_temp:
                 min_temp = v
-                new_min[k] = v
-                break
-        return new_max, new_min
+                new_min = k
+               
+        return new_min, new_max
 
     france_temp = temp_max_min(dict_france)
     sweden_temp = temp_max_min(dict_sweden)
     german_temp = temp_max_min(dict_germany)
 
-    return f"France => {france_temp} /n Sweden = > {sweden_temp} /n Germany = > {german_temp}"
+    n1 = "\n"
+    return f"France => {france_temp} {n1}Sweden = > {sweden_temp} {n1}Germany = > {german_temp}"
 
 
 print(temperature(file_name))

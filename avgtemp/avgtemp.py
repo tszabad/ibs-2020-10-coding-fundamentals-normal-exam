@@ -16,29 +16,32 @@ def temperature(file_name):
     for i, k in enumerate(lines):
         num = k.split(" ")
         if i != 0:
-            dict_france[num[3][0:4]] = num[0]
-            dict_sweden[num[3][0:4]] = num[1]
-            dict_germany[num[3][0:4]] = num[2]
-
+            dict_france[num[3][0:4]] = int(num[0])
+            dict_sweden[num[3][0:4]] = int(num[1])
+            dict_germany[num[3][0:4]] = int(num[2]
+)
     def temp_max_min(args):
-        max_temp = None
-        min_temp = None
+        max_temp = 0
+        min_temp = 40
+        new_max= {}
+        new_min = {}
         for k, v in args.items():
             if v > max_temp:
                 max_temp = v
+                new_max[k] = v
                 break
         for k, v in args.items():
             if v < min_temp:
                 min_temp = v
+                new_min[k] = v
                 break
-        return max_temp, min_temp
+        return new_max, new_min
 
-    for
+    france_temp = temp_max_min(dict_france)
+    sweden_temp = temp_max_min(dict_sweden)
+    german_temp = temp_max_min(dict_germany)
 
-    return dict_france, dict_sweden, dict_germany
-
-
-
+    return f"France => {france_temp} /n Sweden = > {sweden_temp} /n Germany = > {german_temp}"
 
 
 print(temperature(file_name))
